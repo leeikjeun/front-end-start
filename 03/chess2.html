@@ -8,6 +8,7 @@
         #board{width: 400px; height: 400px; float: left;}
         #board span{width: 100px; height: 100px; float: left;}
           .black{background: #000000}
+          .red{background: red}
     </style>
 </head>
 <body>
@@ -40,19 +41,43 @@
 <script>
     var board = document.getElementById("board");
     var span = "";
+    var ColorControl = '';
+
+function set_chess(){
+    var boardColor = '';
     for(var i=0; i<4; i++){
         for(var j=0; j<4; j++){
           span += "<span "
           if((i+j)%2 == 0){
               span += 'class = "black" '
+          }else{
+              span += 'class = "white" ';
           }
           span += "></span>"
             //board.appendChild(span);
         }
       }
-      board.innerHTML += span;
-    
-      //board.innerHTML = add;
+        board.innerHTML = span;
+    }
+    set_chess();
+
+    var num = '';
+      board.addEventListener('click',mouse_click);
+
+      function mouse_click(event){
+        if(event.target.id !== "board"){
+          var test = document.getElementsByTagName('span');
+          for(var i = 0; i < test.length;i++){
+            if(test[i].getAttribute("class")==="red"){
+              test[i].className = boardColor;
+            }
+          }
+            boardColor = event.target.getAttribute("class");
+            event.target.className = "red";
+              }
+            };
+
+
 
 </script>
 </body>
