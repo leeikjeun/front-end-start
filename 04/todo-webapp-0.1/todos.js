@@ -2,25 +2,39 @@
 
 
 function GetDoc(id){
-  return document.getElementsById(id);
+  return document.getElementById(id);
 }
 
 
 
 var ToString = document.getElementById('ToDoString');
+var domlist = GetDoc("do_list");
 
+ 
 
-ToString.addEventListener('keyup',function(event){
-  if(event.keyCode ===13){
-      console.log(ToString.value);
+ToString.addEventListener('keyup',Todo);
+                          
+                          function Todo(event){
+    if(event.keyCode !==13){
+    event.stopPropagation();//이벤트 정지
+        return;
+    }
 
       var newTodo = ToString.value;
-      ToString = "";
-
-      console.log(newTodo);
+      ToString.value = "";
+      
+      
+      
+      domlist.innerHTML += 
+         '<li> \
+      <button class="delete">×</button>\
+      <input type="checkbox" class="toggle-checked">\
+      <span class="text">' + newTodo +'</span>\
+        </li>';
+      
+        
   }
 
-})
 
 
 
