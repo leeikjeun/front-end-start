@@ -2,38 +2,73 @@
 
 
 function GetDoc(id){
-  return document.getElementById(id);
+    return document.getElementById(id);
 }
 
 
 
 var ToString = document.getElementById('ToDoString');
 var domlist = GetDoc("do_list");
-
+var check;
  
 
 ToString.addEventListener('keyup',Todo);
+
+domlist.innerHTML = loadData();
                           
-                          function Todo(event){
+function Todo(event){
     if(event.keyCode !==13){
-    event.stopPropagation();//이벤트 정지
+        event.stopPropagation();//이벤트 정지
         return;
     }
 
-      var newTodo = ToString.value;
-      ToString.value = "";
-      
-      
-      
-      domlist.innerHTML += 
-         '<li> \
-      <button class="delete">×</button>\
-      <input type="checkbox" class="toggle-checked">\
-      <span class="text">' + newTodo +'</span>\
-        </li>';
-      
-        
-  }
+
+
+    var newTodo = ToString.value;
+    ToString.value = "";
+
+
+
+    domlist.innerHTML += '<li> \
+    <button class="delete" onclick="deletes(this)">×</button>\
+    <input type="checkbox" class="toggle-checked" onclick = "check(this)">\
+    <span class="text">' + newTodo +'</span>\
+    </li>';
+
+    saveData();
+}
+
+
+function check(event){
+    if(event.checked){
+        console.log("chage");
+        event.className += " delete";
+    }
+}
+    
+function deletes(event){
+    if(event.className !=="delete"){
+    return;
+    }
+
+    var delect_bt = event;
+    delect_bt.parentElement.remove();
+    saveData();
+    
+}
+
+
+
+function loadData(){
+    return localStorage.getItem("todohtml");
+}
+
+function saveData(){
+    localStorage.setItem("todohtml",domlist.innerHTML);
+    console.log("save");
+}
+
+
 
 
 
