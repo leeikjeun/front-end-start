@@ -20,25 +20,74 @@ function positionChange() {
 }
 
 var target = document.createElement("div");
-
-
-target.addEventListener("click", function() {
+/*
+game_tile.addEventListener("click",function(){
+    ++miss;
+  
+    miss_form = miss;
+})
+*/
+/*target.addEventListener("click", function() {
     ++score;
     target.setAttribute("id","click");
     if(score === 10){
         level++;
         score = 0;
         spead -= spead - 100;
+        if(level === 5){
+            clearInterval(set);
+            target.removeEventListener("click",this.Function);
+        }
+        
     }
     score_form.innerHTML = score;
     level_form.innerHTML = level;
     miss_form.innerHTML = miss;
     limit_form.innerHTML = limit;
     
-});
+});*/
+
+target.addEventListener("click",clickevnet);
+
+game_tile.addEventListener("click",stop);
+
+function stop(e){
+    ++miss;
+    if(miss === limit){
+            clearInterval(set);
+            target.removeEventListener("click",clickevnet);
+            game_tile.removeEventListener("click",stop);
+            alert("실패~~");
+    }
+    
+    
+    miss_form.innerHTML = miss;
+}
+
+function clickevnet(e){
+    ++score;
+    target.setAttribute("id","click");
+    if(score === 10){
+        level++;
+        score = 0;
+        spead -= spead - 150;
+        if(level === 5){
+            clearInterval(set);
+            target.removeEventListener("click",clickevnet);
+            alert("게임 클리어!!");
+        }
+        
+    }
+    e.target.setAttribute("id","click");
+    score_form.innerHTML = score;
+    level_form.innerHTML = level;
+    miss_form.innerHTML = miss;
+    limit_form.innerHTML = limit;
+
+}
 
 positionChange();
 game_tile.appendChild(target);//게임타이틀에 만든 div을 넣음
 
-setInterval(positionChange, spead); //일정시간 반복
+var set = setInterval(positionChange, spead); //일정시간 반복
  
