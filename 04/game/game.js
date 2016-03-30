@@ -52,6 +52,7 @@ target.addEventListener("click",clickevnet);
 game_tile.addEventListener("click",stop);
 
 function stop(e){
+    if(target)
     ++miss;
     if(miss === limit){
             clearInterval(set);
