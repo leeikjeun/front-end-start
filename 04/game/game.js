@@ -20,32 +20,6 @@ function positionChange() {
 }
 
 var target = document.createElement("div");
-/*
-game_tile.addEventListener("click",function(){
-    ++miss;
-  
-    miss_form = miss;
-})
-*/
-/*target.addEventListener("click", function() {
-    ++score;
-    target.setAttribute("id","click");
-    if(score === 10){
-        level++;
-        score = 0;
-        spead -= spead - 100;
-        if(level === 5){
-            clearInterval(set);
-            target.removeEventListener("click",this.Function);
-        }
-        
-    }
-    score_form.innerHTML = score;
-    level_form.innerHTML = level;
-    miss_form.innerHTML = miss;
-    limit_form.innerHTML = limit;
-    
-});*/
 
 target.addEventListener("click",clickevnet);
 
