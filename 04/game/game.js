@@ -14,7 +14,7 @@ var spead = 2000;
 function positionChange() {
     var x = Math.random()*(document.body.scrollWidth-20);
     var y = Math.random()*(document.body.scrollHeight-score_wrap.scrollHeight-20)+score_wrap.scrollHeight;//scrollHeight는 창의 높이를 구해다줌 scrollWidth또한 똑같다
-    target.setAttribute("id", "target");//set 은 엘리맨트 속성 정해줌 id값 타겟됨
+    target.setAttribute("class", "target");//set 은 엘리맨트 속성 정해줌 id값 타겟됨
     target.style.left = x+"px"; //margin left준다 
     target.style.top= y+"px";   //margin top을 준다
 }
@@ -52,8 +52,10 @@ target.addEventListener("click",clickevnet);
 game_tile.addEventListener("click",stop);
 
 function stop(e){
-    if(target)
-    ++miss;
+    if(target.className === "target")
+    {
+        ++miss;
+    }
     if(miss === limit){
             clearInterval(set);
             target.removeEventListener("click",clickevnet);
@@ -67,9 +69,10 @@ function stop(e){
 
 function clickevnet(e){
     ++score;
-    target.setAttribute("id","click");
+    target.setAttribute("class","click");
     if(score === 10){
         level++;
+        miss = 0;
         score = 0;
         spead -= spead - 150;
         if(level === 5){
@@ -79,7 +82,6 @@ function clickevnet(e){
         }
         
     }
-    e.target.setAttribute("id","click");
     score_form.innerHTML = score;
     level_form.innerHTML = level;
     miss_form.innerHTML = miss;
