@@ -27,13 +27,13 @@
 .target
 {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     background-color: red;
 }
 .click{
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     background-color: blue;
 }
