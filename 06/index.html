@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+  #box{margin-left: 30%; width: 40% ; border: 1px solid black;}
+
+
+  </style>
+
+
+</head>
+<body>
+  <div id = "box">
+        <input type="text" id="txt">
+        <input type="button" id="find" value="제출">
+            <div id="list">
+      
+                  
+            </div>
+        <input type="button" id="more_find" value="더보기">
+  </div>
+
+
+
+
+
+
+
+
+  <script type="text/template" id="ListTemplate">
+  <%
+  for(var i=0; i<list.length; i++) {
+    var channel = list[i];
+  %>
+    <li>
+      <div><a href="<%= channel.link %>"> <%=  channel.title %> </a>
+    </li>
+  <%} %>
+  
+  
+  
+  </script>
+
+    <script src="./tmpl.js"></script>
+    <script src="./jasonp.js"></script>
+    <script src="./openapi.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
