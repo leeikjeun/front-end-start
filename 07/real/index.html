@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <title>검색서비스</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>검색 서비스</h1>
+
+  <form  class="form-inline">
+    <div class="input-group">
+      <input type="text" id="input_text" class="form-control" placeholder="검색어를 넣어주세요">
+      <div class="input-group-addon">
+        <button class="btnbtn-primary" id="search_bt">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+
+  <ul id = "menu_tables" class="nav nav-tabs" style="margin-top:30px">
+    <li id = "board" class = "active"><a href="#">게시판</a></li>
+    <li id = "vclip" ><a href="#">동영상</a></li>
+    <li id = "image"><a href="#">이미지</a></li>
+    <li id = "knowledge"><a href="#">팁</a></li>
+    <li id = "blog"><a href="#">블로그</a></li>
+    <li id = "cafe"><a href="#">카페</a></li>
+  </ul>
+    
+    <div class="mov-panel" id="find_list" style="margin-top:30px"></div>
+    
+    
+    <!-- 아직 제이슨 연결 정보 잘모름 확인할것!! -->
+    <script type="text/template" id="ListTemplate"><
+        <ul>
+            <% for(var i = 0 ; i<list.length ; i++) {
+                var jasonInformation = list[i];     
+                
+                if(jasonInformation.thumbnail === null){
+            %>
+                <li>
+                    <a href = "<%= jasonInformation.link %>"> <%= jasonInformation.title%> </a>
+                </li>
+                <% } else { %>
+                
+                <li>
+                    <img src="<%= jasonInformation.thumbnail%>" width=100></img>
+                    <a href = "<%= jasonInformation.link %>"> <%= jasonInformation.title%> </a>
+                </li>
+                
+                <% } %>
+            <% } %>
+        </ul>
+    </script>
+    
+
+  <!-- 더보기 있을경우만 노출 -->
+  <button id="more_bt" class="btn btn-default btn-block">더보기</button>
+    
+      
+    <script src="./first_jason.js"></script>
+    <script src="./jasonp.js"></script>
+    <script src="./tmpl.js"></script>
+    <script src="./event_class.js"></script>
+    <script src="./front-end.js"></script>
+    
+    
+    
+    
+    
+</div>
+</body>
+</html>
