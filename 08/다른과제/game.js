@@ -36,11 +36,12 @@ function addEvent(){
         return false;
           
       }else{
-          $target.attr('class', 'card open').delay(1000);
+          $target.attr('class', 'card open');
           
+          setTimeout(1000);
           
             if(temp !== num){
-                $target.attr('class', 'card close');
+                $target.attr('class', 'card open').delay(100000000).attr('class', 'card close');
                 $temp.attr('class', 'card close');
                 flag = 0;
                 return false;
@@ -48,13 +49,13 @@ function addEvent(){
           flag = 0;
       }
       
-      debugger;
+      //debugger;
     console.log('click card!', num)
     
-
-
 });
 }
+
+
 
 var flag = 0;
 var temp = 0;
