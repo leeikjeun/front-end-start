@@ -38,11 +38,11 @@ function addEvent(){
       }else{
           $target.attr('class', 'card open');
           
-          setTimeout(1000);
+          
           
             if(temp !== num){
-                $target.attr('class', 'card open').delay(100000000).attr('class', 'card close');
-                $temp.attr('class', 'card close');
+                setTimeout(function(){$target.attr('class', 'card close');},500);
+                setTimeout(function(){$temp.attr('class', 'card close');},500);
                 flag = 0;
                 return false;
             }
