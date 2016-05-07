@@ -12,9 +12,10 @@ function shuffle(a) {
 
 function printCards(){
   cards.forEach(function(card){
-    $wrap.append('<div class="card close" num="'+card+'">\
+    $wrap.append('<div class="card close" num="'+card+'" flag = "flase">\
     <div class="front">  </div> \
-    <div class="back">'+ card +'</div></div>');
+    <div class="back"> \
+    <img src = ./'+img_tags[card] +' width = 100px height = 100px> </div></div>');
   });
 }
 
@@ -27,30 +28,34 @@ function addEvent(){
     
       
     
-      
-      if(flag === 0){
-        $target.attr('class', 'card open');
-        temp = num;
-        $temp = $target;
-        flag ++;
-        return false;
-          
-      }else{
-          $target.attr('class', 'card open');
-          
-          
-          
-            if(temp !== num){
-                setTimeout(function(){$target.attr('class', 'card close');},500);
-                setTimeout(function(){$temp.attr('class', 'card close');},500);
-                flag = 0;
-                return false;
-            }
-          flag = 0;
+      if($target.attr('flag')==='flase'){
+          if(flag === 0){
+            $target.attr('class', 'card open');
+            temp = num;
+            $temp = $target;
+            flag ++;
+            return false;
+
+          }else{
+              $target.attr('class', 'card open');
+
+
+
+                if(temp !== num){
+                    setTimeout(function(){$target.attr('class', 'card close');},500);
+                    setTimeout(function(){$temp.attr('class', 'card close');},500);
+                    flag = 0;
+                    return false;
+                }else{
+                    $target.attr('flag','true');
+                    $temp.attr('flag','true');
+                    
+                }
+              flag = 0;
+          }
       }
-      
-      //debugger;
-    console.log('click card!', num)
+          //debugger;
+        console.log('click card!', num)
     
 });
 }
@@ -60,7 +65,8 @@ function addEvent(){
 var flag = 0;
 var temp = 0;
 var $temp;
-var cards = [1,2,3,4, 1,2,3,4];
+var cards = [0,1,2,3, 0,1,2,3];
+var img_tags = ['img/sugi.jpg','img/iu.jpg','img/han.jpg','img/wmdnl.jpg']; 
 var $wrap = $('.wrap');
 
 
